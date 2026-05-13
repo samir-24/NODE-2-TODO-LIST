@@ -1,0 +1,116 @@
+<%- include('partials/header') %>
+
+<h1 class="page-title">
+    Edit Task
+</h1>
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <form action="/updateTask"
+            method="post"
+            class="form-container">
+
+            <input type="hidden"
+                name="id"
+                value="<%= singleTask.id %>">
+
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Task Title
+                </label>
+
+                <input type="text"
+                    name="title"
+                    value="<%= singleTask.title %>"
+                    class="form-control">
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Task Description
+                </label>
+
+                <textarea
+                    name="description"
+                    class="form-control"><%= singleTask.description %></textarea>
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Task Priority
+                </label>
+
+                <select name="priority" class="form-select">
+
+                    <option value="High"
+                    <%= singleTask.priority == "High" ? "selected" : "" %>>
+                    High
+                    </option>
+
+                    <option value="Medium"
+                    <%= singleTask.priority == "Medium" ? "selected" : "" %>>
+                    Medium
+                    </option>
+
+                    <option value="Low"
+                    <%= singleTask.priority == "Low" ? "selected" : "" %>>
+                    Low
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Task Status
+                </label>
+
+                <select name="status" class="form-select">
+
+                    <option value="Pending"
+                    <%= singleTask.status == "Pending" ? "selected" : "" %>>
+                    Pending
+                    </option>
+
+                    <option value="In Progress"
+                    <%= singleTask.status == "In Progress" ? "selected" : "" %>>
+                    In Progress
+                    </option>
+
+                    <option value="Completed"
+                    <%= singleTask.status == "Completed" ? "selected" : "" %>>
+                    Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button type="submit"
+                class="btn btn-primary w-100 custom-btn">
+
+                Update Task
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<%- include('partials/footer') %>

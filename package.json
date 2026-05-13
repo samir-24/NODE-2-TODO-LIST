@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  },
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

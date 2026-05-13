@@ -1,0 +1,149 @@
+<%- include('partials/header') %>
+
+<h1 class="page-title mt-5">
+     Dashboard
+</h1>
+
+<div class="row g-4">
+
+    <div class="col-md-4">
+
+        <div class="dashboard-card">
+
+            <h4>Total Tasks</h4>
+
+            <h1><%= totalTasks %></h1>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="dashboard-card">
+
+            <h4>Pending Tasks</h4>
+
+            <h1><%= pendingTasks %></h1>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="dashboard-card">
+
+            <h4>Completed Tasks</h4>
+
+            <h1><%= completedTasks %></h1>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="table-container">
+
+    <table class="table table-hover text-center align-middle">
+
+        <tr>
+
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Actions</th>
+
+        </tr>
+
+        <% tasks.map((task)=> { %>
+
+            <tr>
+
+                <td><%= task.id %></td>
+
+                <td><%= task.title %></td>
+
+                <td><%= task.description %></td>
+
+                <td>
+
+                    <% if(task.priority=="High" ) { %>
+
+                        <p class="badge bg-danger mt-2">
+                            High
+                        </p>
+
+                    <% } else if(task.priority=="Medium" ) { %>
+
+                        <p class="badge bg-warning text-dark mt-2">
+                            Medium
+                        </p>
+
+                    <% } else { %>
+
+                        <p class="badge bg-info mt-2">
+                            Low
+                        </p>
+
+                    <% } %>
+
+                </td>
+
+                <td>
+
+                    <% if(task.status=="Pending" ) { %>
+
+                        <p class="badge bg-danger mt-2">
+                            Pending
+                        </p>
+
+                    <% } else if(task.status=="In Progress" ) { %>
+
+                        <p class="badge bg-warning text-dark mt-2">
+                            In Progress
+                        </p>
+
+                    <% } else { %>
+
+                        <p class="badge bg-success mt-2">
+                            Completed
+                        </p>
+
+                    <% } %>
+
+                </td>
+
+                <td >
+
+                    <a href="/editTask/<%= task.id %>"
+                        class="btn btn-secondary btn-sm custom-btn">
+                        Edit
+                    </a>
+
+                    <a href="/deleteTask/<%= task.id %>"
+                        class="btn btn-danger btn-sm custom-btn"
+                        onclick="return confirm('Are You Sure To Delete this task?')">
+                        Delete
+                    </a>
+
+                    <a href="/changeStatus/<%= task.id %>"
+                        class="btn btn-success btn-sm custom-btn">
+                        Status
+                    </a>
+
+                </td>
+
+            </tr>
+
+        <% }) %>
+
+    </table>
+
+</div>
+
+<%- include('partials/footer') %>
